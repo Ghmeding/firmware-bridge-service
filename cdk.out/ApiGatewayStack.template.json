@@ -1,0 +1,1131 @@
+{
+ "Resources": {
+  "FirmwareRestApiF585579E": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Description": "REST API for firmware version queries and download URLs",
+    "Name": "FirmwareBridgeRestApi"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Resource"
+   }
+  },
+  "FirmwareRestApiDeployment351346F00e1fb132cf9ce71e11d906cf3cdfd281": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "REST API for firmware version queries and download URLs",
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "DependsOn": [
+    "FirmwareRestApifirmwaredownloadGETD166D671",
+    "FirmwareRestApifirmwaredownload37D1FC2C",
+    "FirmwareRestApifirmwarelatestGETA6458B62",
+    "FirmwareRestApifirmwarelatestDA7D08D2",
+    "FirmwareRestApifirmware4CFAF157",
+    "FirmwareRestApifirmwareuploadPOST18A8A741",
+    "FirmwareRestApifirmwareuploadD573779E"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Deployment/Resource",
+    "aws:cdk:do-not-refactor": true
+   }
+  },
+  "FirmwareRestApiDeploymentStageprod2B759290": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "FirmwareRestApiDeployment351346F00e1fb132cf9ce71e11d906cf3cdfd281"
+    },
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    },
+    "StageName": "prod"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/DeploymentStage.prod/Resource"
+   }
+  },
+  "FirmwareRestApifirmware4CFAF157": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "FirmwareRestApiF585579E",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "firmware",
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/Resource"
+   }
+  },
+  "FirmwareRestApifirmwarelatestDA7D08D2": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "FirmwareRestApifirmware4CFAF157"
+    },
+    "PathPart": "latest",
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/Resource"
+   }
+  },
+  "FirmwareRestApifirmwarelatestGETApiPermissionApiGatewayStackFirmwareRestApi99B37CC7GETfirmwarelatestF40D1651": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttGetLatestVersionFn93A806A7ArnF07694DD"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareRestApiF585579E"
+       },
+       "/",
+       {
+        "Ref": "FirmwareRestApiDeploymentStageprod2B759290"
+       },
+       "/GET/firmware/latest"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/GET/ApiPermission.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.latest"
+   }
+  },
+  "FirmwareRestApifirmwarelatestGETApiPermissionTestApiGatewayStackFirmwareRestApi99B37CC7GETfirmwarelatest445F5504": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttGetLatestVersionFn93A806A7ArnF07694DD"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareRestApiF585579E"
+       },
+       "/test-invoke-stage/GET/firmware/latest"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/GET/ApiPermission.Test.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.latest"
+   }
+  },
+  "FirmwareRestApifirmwarelatestGETA6458B62": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttGetLatestVersionFn93A806A7ArnF07694DD"
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "OperationName": "GetLatestVersion",
+    "ResourceId": {
+     "Ref": "FirmwareRestApifirmwarelatestDA7D08D2"
+    },
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/GET/Resource"
+   }
+  },
+  "FirmwareRestApifirmwaredownload37D1FC2C": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "FirmwareRestApifirmware4CFAF157"
+    },
+    "PathPart": "download",
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/download/Resource"
+   }
+  },
+  "FirmwareRestApifirmwaredownloadGETApiPermissionApiGatewayStackFirmwareRestApi99B37CC7GETfirmwaredownloadF397282D": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttGetDownloadUrlFnA60B72ADArnC84A4166"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareRestApiF585579E"
+       },
+       "/",
+       {
+        "Ref": "FirmwareRestApiDeploymentStageprod2B759290"
+       },
+       "/GET/firmware/download"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/download/GET/ApiPermission.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.download"
+   }
+  },
+  "FirmwareRestApifirmwaredownloadGETApiPermissionTestApiGatewayStackFirmwareRestApi99B37CC7GETfirmwaredownload9C057045": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttGetDownloadUrlFnA60B72ADArnC84A4166"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareRestApiF585579E"
+       },
+       "/test-invoke-stage/GET/firmware/download"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/download/GET/ApiPermission.Test.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.download"
+   }
+  },
+  "FirmwareRestApifirmwaredownloadGETD166D671": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttGetDownloadUrlFnA60B72ADArnC84A4166"
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "OperationName": "GetDownloadUrl",
+    "ResourceId": {
+     "Ref": "FirmwareRestApifirmwaredownload37D1FC2C"
+    },
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/download/GET/Resource"
+   }
+  },
+  "FirmwareRestApifirmwareuploadD573779E": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "FirmwareRestApifirmware4CFAF157"
+    },
+    "PathPart": "upload",
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/Resource"
+   }
+  },
+  "FirmwareRestApifirmwareuploadPOSTApiPermissionApiGatewayStackFirmwareRestApi99B37CC7POSTfirmwareuploadFBA042FE": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttUploadFirmwareFn4DE224EAArn9A646F0E"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareRestApiF585579E"
+       },
+       "/",
+       {
+        "Ref": "FirmwareRestApiDeploymentStageprod2B759290"
+       },
+       "/POST/firmware/upload"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/POST/ApiPermission.ApiGatewayStackFirmwareRestApi99B37CC7.POST..firmware.upload"
+   }
+  },
+  "FirmwareRestApifirmwareuploadPOSTApiPermissionTestApiGatewayStackFirmwareRestApi99B37CC7POSTfirmwareupload619216B2": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttUploadFirmwareFn4DE224EAArn9A646F0E"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareRestApiF585579E"
+       },
+       "/test-invoke-stage/POST/firmware/upload"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/POST/ApiPermission.Test.ApiGatewayStackFirmwareRestApi99B37CC7.POST..firmware.upload"
+   }
+  },
+  "FirmwareRestApifirmwareuploadPOST18A8A741": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:",
+        {
+         "Ref": "AWS::Region"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+         "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttUploadFirmwareFn4DE224EAArn9A646F0E"
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "OperationName": "UploadFirmware",
+    "ResourceId": {
+     "Ref": "FirmwareRestApifirmwareuploadD573779E"
+    },
+    "RestApiId": {
+     "Ref": "FirmwareRestApiF585579E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/POST/Resource"
+   }
+  },
+  "FirmwareWebSocketApi": {
+   "Type": "AWS::ApiGatewayV2::Api",
+   "Properties": {
+    "Name": "FirmwareBridgeWebSocketApi",
+    "ProtocolType": "WEBSOCKET",
+    "RouteSelectionExpression": "$request.body.action"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/FirmwareWebSocketApi"
+   }
+  },
+  "WebSocketProdStage": {
+   "Type": "AWS::ApiGatewayV2::Stage",
+   "Properties": {
+    "ApiId": {
+     "Ref": "FirmwareWebSocketApi"
+    },
+    "AutoDeploy": true,
+    "StageName": "prod"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/WebSocketProdStage"
+   }
+  },
+  "ConnectIntegration": {
+   "Type": "AWS::ApiGatewayV2::Integration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "FirmwareWebSocketApi"
+    },
+    "IntegrationType": "AWS_PROXY",
+    "IntegrationUri": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:apigateway:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":lambda:path/2015-03-31/functions/",
+       {
+        "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttWsConnectFnB17D99F3ArnCD6143FB"
+       },
+       "/invocations"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/ConnectIntegration"
+   }
+  },
+  "ConnectRoute": {
+   "Type": "AWS::ApiGatewayV2::Route",
+   "Properties": {
+    "ApiId": {
+     "Ref": "FirmwareWebSocketApi"
+    },
+    "RouteKey": "$connect",
+    "Target": {
+     "Fn::Join": [
+      "",
+      [
+       "integrations/",
+       {
+        "Ref": "ConnectIntegration"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/ConnectRoute"
+   }
+  },
+  "AllowApiGatewayInvokeConnect": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttWsConnectFnB17D99F3ArnCD6143FB"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareWebSocketApi"
+       },
+       "/*/$connect"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/AllowApiGatewayInvokeConnect"
+   }
+  },
+  "DisconnectIntegration": {
+   "Type": "AWS::ApiGatewayV2::Integration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "FirmwareWebSocketApi"
+    },
+    "IntegrationType": "AWS_PROXY",
+    "IntegrationUri": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:apigateway:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":lambda:path/2015-03-31/functions/",
+       {
+        "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttWsDisconnectFn9523C1B1Arn278DAD1E"
+       },
+       "/invocations"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/DisconnectIntegration"
+   }
+  },
+  "DisconnectRoute": {
+   "Type": "AWS::ApiGatewayV2::Route",
+   "Properties": {
+    "ApiId": {
+     "Ref": "FirmwareWebSocketApi"
+    },
+    "RouteKey": "$disconnect",
+    "Target": {
+     "Fn::Join": [
+      "",
+      [
+       "integrations/",
+       {
+        "Ref": "DisconnectIntegration"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/DisconnectRoute"
+   }
+  },
+  "AllowApiGatewayInvokeDisconnect": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttWsDisconnectFn9523C1B1Arn278DAD1E"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareWebSocketApi"
+       },
+       "/*/$disconnect"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/AllowApiGatewayInvokeDisconnect"
+   }
+  },
+  "SendProgressIntegration": {
+   "Type": "AWS::ApiGatewayV2::Integration",
+   "Properties": {
+    "ApiId": {
+     "Ref": "FirmwareWebSocketApi"
+    },
+    "IntegrationType": "AWS_PROXY",
+    "IntegrationUri": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:apigateway:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":lambda:path/2015-03-31/functions/",
+       {
+        "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttWsSendProgressFn67DC5F49ArnB6BA4D49"
+       },
+       "/invocations"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/SendProgressIntegration"
+   }
+  },
+  "SendProgressRoute": {
+   "Type": "AWS::ApiGatewayV2::Route",
+   "Properties": {
+    "ApiId": {
+     "Ref": "FirmwareWebSocketApi"
+    },
+    "RouteKey": "sendProgress",
+    "Target": {
+     "Fn::Join": [
+      "",
+      [
+       "integrations/",
+       {
+        "Ref": "SendProgressIntegration"
+       }
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/SendProgressRoute"
+   }
+  },
+  "AllowApiGatewayInvokeSendProgress": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::ImportValue": "LambdaStack:ExportsOutputFnGetAttWsSendProgressFn67DC5F49ArnB6BA4D49"
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:aws:execute-api:",
+       {
+        "Ref": "AWS::Region"
+       },
+       ":",
+       {
+        "Ref": "AWS::AccountId"
+       },
+       ":",
+       {
+        "Ref": "FirmwareWebSocketApi"
+       },
+       "/*/sendProgress"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/AllowApiGatewayInvokeSendProgress"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/9VTwW7CMAz9FnJEIWMILty27oK0DQS7VWgyrVsCbRIlLghF/feJtLRo2nXSdor1bL/Yz/ZETGZTMR7A2Y2S9Dgq5E74DUFy5HB2nx6MzIHwDBfh1+joycjYM9tY71Aim7Mh4yxFl1hpSGrVIabQl2WAHJt75ghy7FLqesujTLWc/CVEl6go9j+QgZGtZZFAqj7cNWzcM0jTD/2qc5lAsUjZPPb19s/hoem+er65ihJavkFtn9/UCnkhmK/R6com+AwOYzZk2w6JPTNgew4DtF+BpU6iX/LeJhmK4G9Ie502WxKQNmdPZBpfC0hFmFu4G7Put0UbbFx3G8P/CWfQo6GoeQHlLgURZWqFtpTOSa14f1anifBRpq430E04ytSi/zOIqyvCur6ay4pMRTVXOkVxcA+nyVQ8zsR4cHBSjmylSJYo1s37BZ0LY77fAwAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "ApiGatewayStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "FirmwareRestApiEndpoint276D9F06": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "FirmwareRestApiF585579E"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "FirmwareRestApiDeploymentStageprod2B759290"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "RestApiUrl": {
+   "Description": "REST API base URL",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "FirmwareRestApiF585579E"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "FirmwareRestApiDeploymentStageprod2B759290"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "WebSocketApiEndpoint": {
+   "Description": "WebSocket API endpoint",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "wss://",
+      {
+       "Ref": "FirmwareWebSocketApi"
+      },
+      ".execute-api.",
+      {
+       "Ref": "AWS::Region"
+      },
+      ".amazonaws.com/prod"
+     ]
+    ]
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

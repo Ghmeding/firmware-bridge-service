@@ -1,0 +1,264 @@
+{
+  "/DatabaseStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:10:18)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/DatabaseStack/FirmwareTable": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "tableName": "*",
+        "partitionKey": {
+          "name": "*",
+          "type": "S"
+        },
+        "billingMode": "PAY_PER_REQUEST",
+        "removalPolicy": "retain"
+      }
+    },
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "FirmwareTable040E03A5"
+      }
+    }
+  ],
+  "/DatabaseStack/ConnectionsTable": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "tableName": "*",
+        "partitionKey": {
+          "name": "*",
+          "type": "S"
+        },
+        "billingMode": "PAY_PER_REQUEST",
+        "removalPolicy": "destroy"
+      }
+    },
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "ConnectionsTable8000B8A1"
+      }
+    }
+  ],
+  "/DatabaseStack/UpdateProgressTable": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "tableName": "*",
+        "partitionKey": {
+          "name": "*",
+          "type": "S"
+        },
+        "billingMode": "PAY_PER_REQUEST",
+        "removalPolicy": "destroy"
+      }
+    },
+    {
+      "type": "aws:cdk:hasPhysicalName",
+      "data": {
+        "Ref": "UpdateProgressTable1C7D38C4"
+      }
+    }
+  ],
+  "/DatabaseStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/FirmwareTable/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareTable040E03A5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Table2 in aws-cdk-lib...",
+        "new DatabaseStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/database-stack.ts:13:26)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:10:18)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/DatabaseStack/FirmwareTable/ScalingRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/DatabaseStack/ConnectionsTable/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConnectionsTable8000B8A1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Table2 in aws-cdk-lib...",
+        "new DatabaseStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/database-stack.ts:20:29)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:10:18)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/DatabaseStack/ConnectionsTable/ScalingRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/DatabaseStack/UpdateProgressTable/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "UpdateProgressTable1C7D38C4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Table2 in aws-cdk-lib...",
+        "new DatabaseStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/database-stack.ts:27:32)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:10:18)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/DatabaseStack/UpdateProgressTable/ScalingRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/DatabaseStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/Exports/Output{\"Fn::GetAtt\":[\"FirmwareTable040E03A5\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttFirmwareTable040E03A5Arn76410658"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/Exports/Output{\"Ref\":\"FirmwareTable040E03A5\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefFirmwareTable040E03A59021B46D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/Exports/Output{\"Fn::GetAtt\":[\"ConnectionsTable8000B8A1\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttConnectionsTable8000B8A1Arn6FD6777C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/Exports/Output{\"Ref\":\"ConnectionsTable8000B8A1\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefConnectionsTable8000B8A13717867F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/Exports/Output{\"Fn::GetAtt\":[\"UpdateProgressTable1C7D38C4\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttUpdateProgressTable1C7D38C4Arn1C232301"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/DatabaseStack/Exports/Output{\"Ref\":\"UpdateProgressTable1C7D38C4\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefUpdateProgressTable1C7D38C4A084E196"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ]
+}

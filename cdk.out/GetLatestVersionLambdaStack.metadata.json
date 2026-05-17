@@ -1,0 +1,250 @@
+{
+  "/GetLatestVersionLambdaStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:11:32)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/GetLatestVersionLambdaStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/ServiceRole": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "assumedBy": {
+          "principalAccount": "*",
+          "assumeRoleAction": "*"
+        },
+        "managedPolicies": [
+          {
+            "managedPolicyArn": "*"
+          }
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachInlinePolicy": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToPrincipalPolicy": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "handlerE1533BD5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, @aws-cdk/aws-lambda-go-alpha, new GoFunction in aws-cdk-lib...",
+        "new GetLatestVersionLambdaStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/get-latest-version-lambda-stack.ts:17:20)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:11:32)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/LogGroup": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "logGroupName": "*"
+      }
+    }
+  ],
+  "/GetLatestVersionLambdaStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/Exports/Output{\"Fn::GetAtt\":[\"handlerE1533BD5\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAtthandlerE1533BD5ArnA6E57337"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "handlerServiceRole187D5A5A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, @aws-cdk/aws-lambda-go-alpha, new GoFunction in aws-cdk-lib...",
+        "new GetLatestVersionLambdaStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/get-latest-version-lambda-stack.ts:17:20)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:11:32)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/ServiceRole/DefaultPolicy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "attachToRole": [
+          "*"
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addStatements": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/Code/AssetBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/LogGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "handlerLogGroupE3FD91DA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, @aws-cdk/aws-lambda-go-alpha, new GoFunction in aws-cdk-lib...",
+        "new GetLatestVersionLambdaStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/get-latest-version-lambda-stack.ts:17:20)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:11:32)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/GetLatestVersionLambdaStack/handler/ServiceRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "handlerServiceRoleDefaultPolicyB5E76755"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantReadData in aws-cdk-lib...",
+        "new GetLatestVersionLambdaStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/get-latest-version-lambda-stack.ts:29:25)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:11:32)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

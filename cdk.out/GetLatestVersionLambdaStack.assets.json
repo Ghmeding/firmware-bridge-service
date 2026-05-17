@@ -1,0 +1,34 @@
+{
+  "version": "53.0.0",
+  "files": {
+    "ce27b0c5233227e037a8f352b5edb6d531b016b6b29aef66df15f60891774220": {
+      "displayName": "handler/Code",
+      "source": {
+        "path": "/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lambdas/get-latest-version",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "current_account-current_region-b4fb695a": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "ce27b0c5233227e037a8f352b5edb6d531b016b6b29aef66df15f60891774220.zip",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    },
+    "e1c2c593d8c2663b1bfdf018893af417e533ea109e05c6121f826a5f4fafd731": {
+      "displayName": "GetLatestVersionLambdaStack Template",
+      "source": {
+        "path": "GetLatestVersionLambdaStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-77ebf584": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "e1c2c593d8c2663b1bfdf018893af417e533ea109e05c6121f826a5f4fafd731.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

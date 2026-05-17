@@ -1,0 +1,668 @@
+{
+  "/ApiGatewayStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "restApiName": "*",
+        "description": "*",
+        "deployOptions": {
+          "stageName": "*"
+        }
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareWebSocketApi": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareWebSocketApi"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:64:25)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/WebSocketProdStage": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "WebSocketProdStage"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:70:27)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/ConnectIntegration": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConnectIntegration"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:78:34)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/ConnectRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConnectRoute"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:84:7)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/AllowApiGatewayInvokeConnect": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AllowApiGatewayInvokeConnect"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:90:7)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/DisconnectIntegration": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DisconnectIntegration"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:100:37)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/DisconnectRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "DisconnectRoute"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:106:7)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/AllowApiGatewayInvokeDisconnect": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AllowApiGatewayInvokeDisconnect"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:112:7)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/SendProgressIntegration": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SendProgressIntegration"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:122:39)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/SendProgressRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "SendProgressRoute"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:128:7)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/AllowApiGatewayInvokeSendProgress": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AllowApiGatewayInvokeSendProgress"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:134:7)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/RestApiUrl": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "RestApiUrl"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:143:5)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/WebSocketApiEndpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "WebSocketApiEndpoint"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:148:5)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ApiGatewayStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApiF585579E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:25:20)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Deployment": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "description": "*",
+        "api": "*",
+        "retainDeployments": "*"
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToLogicalId": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToLogicalId": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToLogicalId": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToLogicalId": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToLogicalId": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToLogicalId": [
+          {}
+        ]
+      }
+    },
+    {
+      "type": "aws:cdk:analytics:method",
+      "data": {
+        "addToLogicalId": [
+          {}
+        ]
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/DeploymentStage.prod": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "deployment": "*",
+        "stageName": "*"
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Endpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApiEndpoint276D9F06"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:25:20)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": "*"
+    }
+  ],
+  "/ApiGatewayStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ApiGatewayStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Deployment/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApiDeployment351346F00e1fb132cf9ce71e11d906cf3cdfd281"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:25:20)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/DeploymentStage.prod/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApiDeploymentStageprod2B759290"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:25:20)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "parent": "*",
+        "pathPart": "*"
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmware4CFAF157"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...RootResource.addResource in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:34:40)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/latest": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "parent": "*",
+        "pathPart": "*"
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/download": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "parent": "*",
+        "pathPart": "*"
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/upload": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "parent": "*",
+        "pathPart": "*"
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwarelatestDA7D08D2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:37:29)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/GET": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "resource": "*",
+        "httpMethod": "*",
+        "integration": "*",
+        "options": {
+          "operationName": "*"
+        }
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/download/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwaredownload37D1FC2C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:46:31)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/download/GET": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "resource": "*",
+        "httpMethod": "*",
+        "integration": "*",
+        "options": {
+          "operationName": "*"
+        }
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwareuploadD573779E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:55:29)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/POST": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "resource": "*",
+        "httpMethod": "*",
+        "integration": "*",
+        "options": {
+          "operationName": "*"
+        }
+      }
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/GET/ApiPermission.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.latest": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwarelatestGETApiPermissionApiGatewayStackFirmwareRestApi99B37CC7GETfirmwarelatestF40D1651"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:38:12)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/GET/ApiPermission.Test.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.latest": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwarelatestGETApiPermissionTestApiGatewayStackFirmwareRestApi99B37CC7GETfirmwarelatest445F5504"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:38:12)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/latest/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwarelatestGETA6458B62"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:38:12)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/download/GET/ApiPermission.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.download": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwaredownloadGETApiPermissionApiGatewayStackFirmwareRestApi99B37CC7GETfirmwaredownloadF397282D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:47:14)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/download/GET/ApiPermission.Test.ApiGatewayStackFirmwareRestApi99B37CC7.GET..firmware.download": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwaredownloadGETApiPermissionTestApiGatewayStackFirmwareRestApi99B37CC7GETfirmwaredownload9C057045"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:47:14)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/download/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwaredownloadGETD166D671"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:47:14)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/POST/ApiPermission.ApiGatewayStackFirmwareRestApi99B37CC7.POST..firmware.upload": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwareuploadPOSTApiPermissionApiGatewayStackFirmwareRestApi99B37CC7POSTfirmwareuploadFBA042FE"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:56:12)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/POST/ApiPermission.Test.ApiGatewayStackFirmwareRestApi99B37CC7.POST..firmware.upload": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwareuploadPOSTApiPermissionTestApiGatewayStackFirmwareRestApi99B37CC7POSTfirmwareupload619216B2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:56:12)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/ApiGatewayStack/FirmwareRestApi/Default/firmware/upload/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareRestApifirmwareuploadPOST18A8A741"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new ApiGatewayStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/api-gateway-stack.ts:56:12)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:21:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}

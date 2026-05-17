@@ -1,0 +1,1230 @@
+{
+ "Resources": {
+  "GetLatestVersionFnServiceRoleE0C7B45D": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetLatestVersionFn/ServiceRole/Resource"
+   }
+  },
+  "GetLatestVersionFnServiceRoleDefaultPolicy23A4F1B9": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "DatabaseStack:ExportsOutputFnGetAttFirmwareTable040E03A5Arn76410658"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetLatestVersionFnServiceRoleDefaultPolicy23A4F1B9",
+    "Roles": [
+     {
+      "Ref": "GetLatestVersionFnServiceRoleE0C7B45D"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetLatestVersionFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetLatestVersionFn93A806A7": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "d54ccd5757fe21f87b08d4c546bc1e1e3aae66756a8900edc5746f15af2bd04c.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "FIRMWARE_TABLE_NAME": {
+       "Fn::ImportValue": "DatabaseStack:ExportsOutputRefFirmwareTable040E03A59021B46D"
+      }
+     }
+    },
+    "Handler": "bootstrap",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "GetLatestVersionFnServiceRoleE0C7B45D",
+      "Arn"
+     ]
+    },
+    "Runtime": "provided.al2023",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "GetLatestVersionFnServiceRoleDefaultPolicy23A4F1B9",
+    "GetLatestVersionFnServiceRoleE0C7B45D"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetLatestVersionFn/Resource",
+    "aws:asset:path": "asset.d54ccd5757fe21f87b08d4c546bc1e1e3aae66756a8900edc5746f15af2bd04c",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetLatestVersionFnLogGroup52680367": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetLatestVersionFn93A806A7"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetLatestVersionFn/LogGroup/Resource"
+   }
+  },
+  "UploadFirmwareFnServiceRole5FD6FB27": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/UploadFirmwareFn/ServiceRole/Resource"
+   }
+  },
+  "UploadFirmwareFnServiceRoleDefaultPolicyCA8A60B1": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:PutItem",
+        "dynamodb:Query",
+        "dynamodb:Scan",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "DatabaseStack:ExportsOutputFnGetAttFirmwareTable040E03A5Arn76410658"
+       }
+      },
+      {
+       "Action": [
+        "s3:Abort*",
+        "s3:DeleteObject*",
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::ImportValue": "StorageStack:ExportsOutputFnGetAttFirmwareBucketD515617BArn13C3C3D3"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "StorageStack:ExportsOutputFnGetAttFirmwareBucketD515617BArn13C3C3D3"
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "UploadFirmwareFnServiceRoleDefaultPolicyCA8A60B1",
+    "Roles": [
+     {
+      "Ref": "UploadFirmwareFnServiceRole5FD6FB27"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/UploadFirmwareFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "UploadFirmwareFn4DE224EA": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "0ab922c76e55ba6cd3e4522cfc1a9a6dc04f2b7b92c6a5d91dbda6e24fc828c2.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "FIRMWARE_TABLE_NAME": {
+       "Fn::ImportValue": "DatabaseStack:ExportsOutputRefFirmwareTable040E03A59021B46D"
+      },
+      "FIRMWARE_BUCKET_NAME": {
+       "Fn::ImportValue": "StorageStack:ExportsOutputRefFirmwareBucketD515617B90C9E7DD"
+      }
+     }
+    },
+    "Handler": "bootstrap",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "UploadFirmwareFnServiceRole5FD6FB27",
+      "Arn"
+     ]
+    },
+    "Runtime": "provided.al2023",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "UploadFirmwareFnServiceRoleDefaultPolicyCA8A60B1",
+    "UploadFirmwareFnServiceRole5FD6FB27"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/UploadFirmwareFn/Resource",
+    "aws:asset:path": "asset.0ab922c76e55ba6cd3e4522cfc1a9a6dc04f2b7b92c6a5d91dbda6e24fc828c2",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "UploadFirmwareFnLogGroup8B4F8C3F": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "UploadFirmwareFn4DE224EA"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/UploadFirmwareFn/LogGroup/Resource"
+   }
+  },
+  "GetDownloadUrlFnServiceRoleE87778E3": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetDownloadUrlFn/ServiceRole/Resource"
+   }
+  },
+  "GetDownloadUrlFnServiceRoleDefaultPolicyD2FC6DDA": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:GetItem",
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator",
+        "dynamodb:Query",
+        "dynamodb:Scan"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "DatabaseStack:ExportsOutputFnGetAttFirmwareTable040E03A5Arn76410658"
+       }
+      },
+      {
+       "Action": [
+        "s3:GetBucket*",
+        "s3:GetObject*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::ImportValue": "StorageStack:ExportsOutputFnGetAttFirmwareBucketD515617BArn13C3C3D3"
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::ImportValue": "StorageStack:ExportsOutputFnGetAttFirmwareBucketD515617BArn13C3C3D3"
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "GetDownloadUrlFnServiceRoleDefaultPolicyD2FC6DDA",
+    "Roles": [
+     {
+      "Ref": "GetDownloadUrlFnServiceRoleE87778E3"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetDownloadUrlFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "GetDownloadUrlFnA60B72AD": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "db2abf7c7fac7595e98eb7b6752e3097874a584caf97f72f2c27025af61404fe.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "FIRMWARE_TABLE_NAME": {
+       "Fn::ImportValue": "DatabaseStack:ExportsOutputRefFirmwareTable040E03A59021B46D"
+      },
+      "FIRMWARE_BUCKET_NAME": {
+       "Fn::ImportValue": "StorageStack:ExportsOutputRefFirmwareBucketD515617B90C9E7DD"
+      }
+     }
+    },
+    "Handler": "bootstrap",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "GetDownloadUrlFnServiceRoleE87778E3",
+      "Arn"
+     ]
+    },
+    "Runtime": "provided.al2023",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "GetDownloadUrlFnServiceRoleDefaultPolicyD2FC6DDA",
+    "GetDownloadUrlFnServiceRoleE87778E3"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetDownloadUrlFn/Resource",
+    "aws:asset:path": "asset.db2abf7c7fac7595e98eb7b6752e3097874a584caf97f72f2c27025af61404fe",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "GetDownloadUrlFnLogGroupD379F0B4": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "GetDownloadUrlFnA60B72AD"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/GetDownloadUrlFn/LogGroup/Resource"
+   }
+  },
+  "WsConnectFnServiceRole749353A4": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsConnectFn/ServiceRole/Resource"
+   }
+  },
+  "WsConnectFnServiceRoleDefaultPolicyE8538EDC": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchWriteItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "DatabaseStack:ExportsOutputFnGetAttConnectionsTable8000B8A1Arn6FD6777C"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "WsConnectFnServiceRoleDefaultPolicyE8538EDC",
+    "Roles": [
+     {
+      "Ref": "WsConnectFnServiceRole749353A4"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsConnectFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "WsConnectFnB17D99F3": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "9453d73f9f95b4b5f36d09e9296a73fda50159456bd9e3d48f9b2a79396c8e00.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "CONNECTIONS_TABLE_NAME": {
+       "Fn::ImportValue": "DatabaseStack:ExportsOutputRefConnectionsTable8000B8A13717867F"
+      }
+     }
+    },
+    "Handler": "bootstrap",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "WsConnectFnServiceRole749353A4",
+      "Arn"
+     ]
+    },
+    "Runtime": "provided.al2023",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "WsConnectFnServiceRoleDefaultPolicyE8538EDC",
+    "WsConnectFnServiceRole749353A4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsConnectFn/Resource",
+    "aws:asset:path": "asset.9453d73f9f95b4b5f36d09e9296a73fda50159456bd9e3d48f9b2a79396c8e00",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "WsConnectFnLogGroupC9BADDD4": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "WsConnectFnB17D99F3"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsConnectFn/LogGroup/Resource"
+   }
+  },
+  "WsDisconnectFnServiceRoleF36033AD": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsDisconnectFn/ServiceRole/Resource"
+   }
+  },
+  "WsDisconnectFnServiceRoleDefaultPolicy76179A14": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchWriteItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "DatabaseStack:ExportsOutputFnGetAttConnectionsTable8000B8A1Arn6FD6777C"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "WsDisconnectFnServiceRoleDefaultPolicy76179A14",
+    "Roles": [
+     {
+      "Ref": "WsDisconnectFnServiceRoleF36033AD"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsDisconnectFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "WsDisconnectFn9523C1B1": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "29029d3d3eaab4e1f3e851fa50ccfb16b2c2f0e099a1651b0b809a546118b4af.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "CONNECTIONS_TABLE_NAME": {
+       "Fn::ImportValue": "DatabaseStack:ExportsOutputRefConnectionsTable8000B8A13717867F"
+      }
+     }
+    },
+    "Handler": "bootstrap",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "WsDisconnectFnServiceRoleF36033AD",
+      "Arn"
+     ]
+    },
+    "Runtime": "provided.al2023",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "WsDisconnectFnServiceRoleDefaultPolicy76179A14",
+    "WsDisconnectFnServiceRoleF36033AD"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsDisconnectFn/Resource",
+    "aws:asset:path": "asset.29029d3d3eaab4e1f3e851fa50ccfb16b2c2f0e099a1651b0b809a546118b4af",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "WsDisconnectFnLogGroupF23AFCC4": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "WsDisconnectFn9523C1B1"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsDisconnectFn/LogGroup/Resource"
+   }
+  },
+  "WsSendProgressFnServiceRoleB30D5AB0": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsSendProgressFn/ServiceRole/Resource"
+   }
+  },
+  "WsSendProgressFnServiceRoleDefaultPolicy97DE7FBC": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchWriteItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::ImportValue": "DatabaseStack:ExportsOutputFnGetAttUpdateProgressTable1C7D38C4Arn1C232301"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "WsSendProgressFnServiceRoleDefaultPolicy97DE7FBC",
+    "Roles": [
+     {
+      "Ref": "WsSendProgressFnServiceRoleB30D5AB0"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsSendProgressFn/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "WsSendProgressFn67DC5F49": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Architectures": [
+     "arm64"
+    ],
+    "Code": {
+     "S3Bucket": {
+      "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
+     },
+     "S3Key": "21e914112838eab9d7317ce86a938d42b901261eab53deb43ab4df33314a7cae.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "UPDATE_PROGRESS_TABLE_NAME": {
+       "Fn::ImportValue": "DatabaseStack:ExportsOutputRefUpdateProgressTable1C7D38C4A084E196"
+      }
+     }
+    },
+    "Handler": "bootstrap",
+    "MemorySize": 128,
+    "Role": {
+     "Fn::GetAtt": [
+      "WsSendProgressFnServiceRoleB30D5AB0",
+      "Arn"
+     ]
+    },
+    "Runtime": "provided.al2023",
+    "Timeout": 10
+   },
+   "DependsOn": [
+    "WsSendProgressFnServiceRoleDefaultPolicy97DE7FBC",
+    "WsSendProgressFnServiceRoleB30D5AB0"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsSendProgressFn/Resource",
+    "aws:asset:path": "asset.21e914112838eab9d7317ce86a938d42b901261eab53deb43ab4df33314a7cae",
+    "aws:asset:is-bundled": true,
+    "aws:asset:property": "Code"
+   }
+  },
+  "WsSendProgressFnLogGroupC82159C8": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "LogGroupName": {
+     "Fn::Join": [
+      "",
+      [
+       "/aws/lambda/",
+       {
+        "Ref": "WsSendProgressFn67DC5F49"
+       }
+      ]
+     ]
+    },
+    "RetentionInDays": 731
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/WsSendProgressFn/LogGroup/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/+2WXWvCMBSGf4u5lDTr/LjxalWYDMYQ9U6KHJNYo2lSmnQiIf999ENB3MYY7APxIpzyvuec5Akn0A7p9HvEhS3Ym4CyXSDFiriZBbrDsDdLJyAlbqolXzgExhQpZ8MDGjiU5UJRkYGMKNWFsmiA2gg3OWVBRK3QqpI9RikoSDibaCmo4AYNFu5MO0R5kxt77BAwNteT4xZ1RlnTuNYC3TwpKRQ/eaiNvmB+3vfqAW/4141/Q/hrhBiP1qo8Gq71Uj0VzHXpXPS5lBmbWbA85cqas/m9lH+6/5Vu++8aVYNTz4zHprsEY7g1JCoDNl0yLOiO2yEYXo3UOyvGEtIVAzJaq8dCVU8DS50Y4p51Ms51kS0cks3nC6S8eTi/JVaIx6N4jyu2mYVEqMTjMACZbYCErYfmb+SujDVTkOjGHusj20f38N0Ve6w042Rr7l47PXLfJ2Fra4QI8kJZkXIyreMbPbs9PTUJAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "LambdaStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Outputs": {
+  "ExportsOutputFnGetAttGetLatestVersionFn93A806A7ArnF07694DD": {
+   "Value": {
+    "Fn::GetAtt": [
+     "GetLatestVersionFn93A806A7",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "LambdaStack:ExportsOutputFnGetAttGetLatestVersionFn93A806A7ArnF07694DD"
+   }
+  },
+  "ExportsOutputFnGetAttGetDownloadUrlFnA60B72ADArnC84A4166": {
+   "Value": {
+    "Fn::GetAtt": [
+     "GetDownloadUrlFnA60B72AD",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "LambdaStack:ExportsOutputFnGetAttGetDownloadUrlFnA60B72ADArnC84A4166"
+   }
+  },
+  "ExportsOutputFnGetAttUploadFirmwareFn4DE224EAArn9A646F0E": {
+   "Value": {
+    "Fn::GetAtt": [
+     "UploadFirmwareFn4DE224EA",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "LambdaStack:ExportsOutputFnGetAttUploadFirmwareFn4DE224EAArn9A646F0E"
+   }
+  },
+  "ExportsOutputFnGetAttWsConnectFnB17D99F3ArnCD6143FB": {
+   "Value": {
+    "Fn::GetAtt": [
+     "WsConnectFnB17D99F3",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "LambdaStack:ExportsOutputFnGetAttWsConnectFnB17D99F3ArnCD6143FB"
+   }
+  },
+  "ExportsOutputFnGetAttWsDisconnectFn9523C1B1Arn278DAD1E": {
+   "Value": {
+    "Fn::GetAtt": [
+     "WsDisconnectFn9523C1B1",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "LambdaStack:ExportsOutputFnGetAttWsDisconnectFn9523C1B1Arn278DAD1E"
+   }
+  },
+  "ExportsOutputFnGetAttWsSendProgressFn67DC5F49ArnB6BA4D49": {
+   "Value": {
+    "Fn::GetAtt": [
+     "WsSendProgressFn67DC5F49",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "LambdaStack:ExportsOutputFnGetAttWsSendProgressFn67DC5F49ArnB6BA4D49"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

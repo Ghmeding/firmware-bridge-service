@@ -1,0 +1,445 @@
+{
+ "Resources": {
+  "FirmwareTable040E03A5": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "PK",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "PK",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "FirmwareVersions"
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "DatabaseStack/FirmwareTable/Resource"
+   }
+  },
+  "ConnectionsTable8000B8A1": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "connectionId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "connectionId",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "WebSocketConnections"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "DatabaseStack/ConnectionsTable/Resource"
+   }
+  },
+  "UpdateProgressTable1C7D38C4": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "deviceId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "deviceId",
+      "KeyType": "HASH"
+     }
+    ],
+    "TableName": "UpdateProgress"
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "DatabaseStack/UpdateProgressTable/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/8VQwYrCMBT8Ft9xSbNu0UtvIj0tSrfVg4iU1+a5PE0TSaISSv99qR72D/QwzDADMzCpTOczOZ3g3SetOieaG9lXAduzwLuvVTTYWdXIfoONpn0PYeQ1dgQZfICAC7rAga35pghZD+Y/CvEyygoGAQ1rzeZ3ZdVoFYtdXeRlXeY/27zagABHnb2hLqzmNkIGjgKygUG8bFGRD87Gt0wexPJoHg8PoiRvr66l/aP+icMgjFUkT/7zls7k11xOJyfPnLirCdyRLJ/8B7TRB27OAQAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "DatabaseStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Outputs": {
+  "ExportsOutputFnGetAttFirmwareTable040E03A5Arn76410658": {
+   "Value": {
+    "Fn::GetAtt": [
+     "FirmwareTable040E03A5",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "DatabaseStack:ExportsOutputFnGetAttFirmwareTable040E03A5Arn76410658"
+   }
+  },
+  "ExportsOutputRefFirmwareTable040E03A59021B46D": {
+   "Value": {
+    "Ref": "FirmwareTable040E03A5"
+   },
+   "Export": {
+    "Name": "DatabaseStack:ExportsOutputRefFirmwareTable040E03A59021B46D"
+   }
+  },
+  "ExportsOutputFnGetAttConnectionsTable8000B8A1Arn6FD6777C": {
+   "Value": {
+    "Fn::GetAtt": [
+     "ConnectionsTable8000B8A1",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "DatabaseStack:ExportsOutputFnGetAttConnectionsTable8000B8A1Arn6FD6777C"
+   }
+  },
+  "ExportsOutputRefConnectionsTable8000B8A13717867F": {
+   "Value": {
+    "Ref": "ConnectionsTable8000B8A1"
+   },
+   "Export": {
+    "Name": "DatabaseStack:ExportsOutputRefConnectionsTable8000B8A13717867F"
+   }
+  },
+  "ExportsOutputFnGetAttUpdateProgressTable1C7D38C4Arn1C232301": {
+   "Value": {
+    "Fn::GetAtt": [
+     "UpdateProgressTable1C7D38C4",
+     "Arn"
+    ]
+   },
+   "Export": {
+    "Name": "DatabaseStack:ExportsOutputFnGetAttUpdateProgressTable1C7D38C4Arn1C232301"
+   }
+  },
+  "ExportsOutputRefUpdateProgressTable1C7D38C4A084E196": {
+   "Value": {
+    "Ref": "UpdateProgressTable1C7D38C4"
+   },
+   "Export": {
+    "Name": "DatabaseStack:ExportsOutputRefUpdateProgressTable1C7D38C4A084E196"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,154 @@
+{
+  "/StorageStack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:12:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/StorageStack/FirmwareBucket": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucketName": "*",
+        "versioned": true,
+        "encryption": "S3_MANAGED",
+        "blockPublicAccess": "*",
+        "enforceSSL": true,
+        "removalPolicy": "retain"
+      }
+    }
+  ],
+  "/StorageStack/FirmwareBucketName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareBucketName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new StorageStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/storage-stack.ts:20:5)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:12:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/StorageStack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/StorageStack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/StorageStack/FirmwareBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareBucketD515617B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/storage-stack.ts:11:27)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:12:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/StorageStack/FirmwareBucket/Policy": [
+    {
+      "type": "aws:cdk:analytics:construct",
+      "data": {
+        "bucket": "*"
+      }
+    }
+  ],
+  "/StorageStack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/StorageStack/CDKMetadata/Condition": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadataAvailable"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/StorageStack/Exports/Output{\"Fn::GetAtt\":[\"FirmwareBucketD515617B\",\"Arn\"]}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputFnGetAttFirmwareBucketD515617BArn13C3C3D3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/StorageStack/Exports/Output{\"Ref\":\"FirmwareBucketD515617B\"}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ExportsOutputRefFirmwareBucketD515617B90C9E7DD"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib, node internals, @cspotcode/source-map-support...",
+        "(no user code in 9007199254740991 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/StorageStack/FirmwareBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FirmwareBucketPolicy5CDBFA7C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new StorageStack (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/lib/storage-stack.ts:11:27)",
+        "<anonymous> (/Users/gmeding/Desktop/Archive/Repositories/firmware-bridge-service/bin/firmware-bridge-service.ts:12:17)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}
