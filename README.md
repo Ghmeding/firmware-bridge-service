@@ -43,20 +43,20 @@ To build and deploy this project, you need:
 
 ## 🔌 API Endpoints
 
-Once deployed, the CDK outputs will provide your REST API URL and WebSocket Endpoint.
+The service is currently deployed and can be tested using the following active endpoints:
 
-### REST API
+### REST API (Base URL: `https://vji4dtd9r9.execute-api.eu-central-1.amazonaws.com/prod`)
 
-- **POST** `/firmware/upload`
+- **POST** `https://vji4dtd9r9.execute-api.eu-central-1.amazonaws.com/prod/firmware/upload`
   *Hardware Team:* Generates a presigned S3 PUT URL to upload a new firmware binary, and logs the new version.
-- **GET** `/firmware/latest`
+- **GET** `https://vji4dtd9r9.execute-api.eu-central-1.amazonaws.com/prod/firmware/latest`
   *iOS App:* Retrieves the latest available firmware version metadata.
-- **GET** `/firmware/download?version=x.y.z`
+- **GET** `https://vji4dtd9r9.execute-api.eu-central-1.amazonaws.com/prod/firmware/download?version=x.y.z`
   *iOS App:* Generates a short-lived presigned S3 GET URL to download the actual firmware binary directly from S3. *(Omitting `version` defaults to the latest).*
 
 ### WebSocket API
 
-- **Connect:** Connect to `wss://<api-id>.execute-api.<region>.amazonaws.com/prod?deviceId=<id>`
+- **Connect:** Connect to `wss://bc4m5mbjd5.execute-api.eu-central-1.amazonaws.com/prod?deviceId=<id>`
 - **Action: `sendProgress`**
   *Device/App:* While performing the BLE update, send a JSON payload to report progress.
   ```json
